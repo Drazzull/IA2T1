@@ -1,9 +1,0 @@
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\bin\Debug\SupervisorioIA2T1.exe.config
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\bin\Debug\SupervisorioIA2T1.exe
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\bin\Debug\SupervisorioIA2T1.pdb
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.csprojResolveAssemblyReference.cache
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.frmSupervisorio.resources
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.Properties.Resources.resources
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.csproj.GenerateResource.Cache
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.exe
-d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.pdb
