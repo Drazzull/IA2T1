@@ -7,3 +7,12 @@ d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\Supervis
 d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.csproj.GenerateResource.Cache
 d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.exe
 d:\users\arthur\documents\visual studio 2015\Projects\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.pdb
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\bin\Debug\SupervisorioIA2T1.exe.config
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\bin\Debug\SupervisorioIA2T1.exe
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\bin\Debug\SupervisorioIA2T1.pdb
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.csprojResolveAssemblyReference.cache
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.frmSupervisorio.resources
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.Properties.Resources.resources
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.csproj.GenerateResource.Cache
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.exe
+D:\Users\Arthur\OneDrive\Engenharia de Computação\11ª Fase\Inteligência Artificial II\IA2T1\SupervisorioIA2T1\SupervisorioIA2T1\obj\Debug\SupervisorioIA2T1.pdb
