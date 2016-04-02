@@ -16,7 +16,7 @@ namespace SupervisorioIA2T1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSupervisorio());
+            Application.Run(new FrmSupervisorio());
         }
     }
 }

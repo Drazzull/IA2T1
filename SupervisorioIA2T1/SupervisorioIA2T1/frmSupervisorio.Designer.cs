@@ -1,6 +1,6 @@
 ﻿namespace SupervisorioIA2T1
 {
-    partial class frmSupervisorio
+    partial class FrmSupervisorio
     {
         /// <summary>
         /// Required designer variable.
@@ -28,26 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTreino = new System.Windows.Forms.Button();
             this.btnProducao = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.InitialImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 218);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnTreino
             // 
@@ -57,6 +46,7 @@
             this.btnTreino.TabIndex = 1;
             this.btnTreino.Text = "Iniciar Treinamento";
             this.btnTreino.UseVisualStyleBackColor = true;
+            this.btnTreino.Click += new System.EventHandler(this.btnTreino_Click);
             // 
             // btnProducao
             // 
@@ -66,6 +56,17 @@
             this.btnProducao.TabIndex = 2;
             this.btnProducao.Text = "Iniciar Produção";
             this.btnProducao.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.InitialImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
+            this.pictureBox3.Location = new System.Drawing.Point(482, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(229, 218);
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -78,16 +79,16 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox3
+            // pictureBox1
             // 
-            this.pictureBox3.BackgroundImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.InitialImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
-            this.pictureBox3.Location = new System.Drawing.Point(482, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(229, 218);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
+            this.pictureBox1.BackgroundImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.InitialImage = global::SupervisorioIA2T1.Properties.Resources.Cooler;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 218);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // frmSupervisorio
             // 
@@ -101,9 +102,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmSupervisorio";
             this.Text = "Supervisório - IA2 - T1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

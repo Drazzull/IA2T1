@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace SupervisorioIA2T1
 {
-    public partial class frmSupervisorio : Form
+    public partial class FrmSupervisorio : Form
     {
-        public frmSupervisorio()
+        public FrmSupervisorio()
         {
             InitializeComponent();
+        }
+
+        private void btnTreino_Click(object sender, EventArgs e)
+        {
+            FrmChartTreinamento frmChartTreinamento = new FrmChartTreinamento();
+            frmChartTreinamento.Show();
         }
     }
 }

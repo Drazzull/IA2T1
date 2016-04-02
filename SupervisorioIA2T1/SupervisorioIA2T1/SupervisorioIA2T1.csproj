@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmSupervisorio.cs">
+    <Compile Include="FrmChartTreinamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSupervisorio.Designer.cs">
-      <DependentUpon>frmSupervisorio.cs</DependentUpon>
+    <Compile Include="FrmChartTreinamento.Designer.cs">
+      <DependentUpon>FrmChartTreinamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSupervisorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSupervisorio.Designer.cs">
+      <DependentUpon>FrmSupervisorio.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,8 +69,11 @@
     <Compile Include="VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="frmSupervisorio.resx">
-      <DependentUpon>frmSupervisorio.cs</DependentUpon>
+    <EmbeddedResource Include="FrmChartTreinamento.resx">
+      <DependentUpon>FrmChartTreinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSupervisorio.resx">
+      <DependentUpon>FrmSupervisorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cooler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="treinamento.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
