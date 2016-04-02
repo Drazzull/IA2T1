@@ -7,6 +7,9 @@
     public partial class FrmChartTreinamento : Form
     {
         #region Construtor
+        /// <summary>
+        /// Instancia uma instância da classe <see cref="FrmChartTreinamento"/>
+        /// </summary>
         public FrmChartTreinamento()
         {
             this.InitializeComponent();
@@ -16,15 +19,19 @@
 
         #region Métodos
         #region Privados
+        /// <summary>
+        /// Realiza o povoamento dos dados do gráfico
+        /// </summary>
         private void PublicarGrafico()
         {
             try
             {
                 grfTreinamento.Series[0].Points.Clear();
 
-                using (StreamReader sr = new StreamReader(Path.Combine(Application.StartupPath, "treinamento.txt")))
+                using (StreamReader sr = new StreamReader(
+                    Path.Combine(Application.StartupPath, "treinamento.txt")))
                 {
-                    while(true)
+                    while (true)
                     {
                         string valorLinha = sr.ReadLine();
                         if (string.IsNullOrEmpty(valorLinha))
@@ -39,13 +46,10 @@
                     }
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
-                MessageBox.Show(
-                    string.Format("Erro{0}{1}StackTrace:{2}",
-                    exp.Message,
-                    Environment.NewLine,
-                    exp.StackTrace));
+                MessageBox.Show(string.Format(
+                    "Erro{0}{1}StackTrace:{2}", exp.Message, Environment.NewLine, exp.StackTrace));
             }
         }
         #endregion
