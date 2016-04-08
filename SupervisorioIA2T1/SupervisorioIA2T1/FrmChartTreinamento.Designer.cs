@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.grfTreinamento = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.grfTreinamento)).BeginInit();
             this.SuspendLayout();
@@ -39,26 +39,26 @@
             // grfTreinamento
             // 
             this.grfTreinamento.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.FrameThin1;
-            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.Name = "ChartArea1";
-            this.grfTreinamento.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.Name = "ChartArea1";
+            this.grfTreinamento.ChartAreas.Add(chartArea1);
             this.grfTreinamento.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.grfTreinamento.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.grfTreinamento.Legends.Add(legend1);
             this.grfTreinamento.Location = new System.Drawing.Point(0, 0);
             this.grfTreinamento.Name = "grfTreinamento";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Erro";
-            this.grfTreinamento.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Erro";
+            this.grfTreinamento.Series.Add(series1);
             this.grfTreinamento.Size = new System.Drawing.Size(1054, 500);
             this.grfTreinamento.TabIndex = 0;
             this.grfTreinamento.Text = "Gráfico de treinamento";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            title2.Name = "title1";
-            title2.Text = "Gráfico de Treinamento";
-            this.grfTreinamento.Titles.Add(title2);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            title1.Name = "title1";
+            title1.Text = "Gráfico de Treinamento";
+            this.grfTreinamento.Titles.Add(title1);
             // 
             // FrmChartTreinamento
             // 
@@ -69,6 +69,8 @@
             this.Name = "FrmChartTreinamento";
             this.Text = "FrmChartTreinamento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmChartTreinamento_FormClosing);
+            this.Shown += new System.EventHandler(this.FrmChartTreinamento_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.grfTreinamento)).EndInit();
             this.ResumeLayout(false);
 

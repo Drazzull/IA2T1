@@ -5,15 +5,29 @@
 
     public partial class FrmSupervisorio : Form
     {
+        #region Construtor
+        /// <summary>
+        /// Instancia uma instância da classe <see cref="FrmSupervisorio"/>
+        /// </summary>
         public FrmSupervisorio()
         {
             InitializeComponent();
         }
+        #endregion
 
-        private void btnTreino_Click(object sender, EventArgs e)
+        #region Métodos
+        #region Componentes do Form
+        /// <summary>
+        /// Evento click do botão de treino
+        /// </summary>
+        /// <param name="sender">Objeto sender</param>
+        /// <param name="e">Objeto EventArgs</param>
+        private void btnProgramarTreinamento_Click(object sender, EventArgs e)
         {
-            FrmChartTreinamento frmChartTreinamento = new FrmChartTreinamento();
-            frmChartTreinamento.ShowDialog();
+            FrmTreinamento frmTreinamento = new FrmTreinamento();
+            frmTreinamento.ShowDialog();
         }
+        #endregion
+        #endregion
     }
 }
