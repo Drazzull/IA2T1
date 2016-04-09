@@ -6,6 +6,33 @@
 
     public partial class FrmSupervisorio : Form
     {
+        #region Propriedades
+        /// <summary>
+        /// Valor da string recebida
+        /// </summary>
+        string StringRx { get; set; }
+
+        /// <summary>
+        /// Variável com a saída 1 obtida
+        /// </summary>
+        float Saida1 { get; set; }
+
+        /// <summary>
+        /// Variável com a saída 2 obtida
+        /// </summary>
+        float Saida2 { get; set; }
+
+        /// <summary>
+        /// Variável com a temperatura obtida
+        /// </summary>
+        float Temperatura { get; set; }
+
+        /// <summary>
+        /// Variável com os controles dos ventiladores
+        /// </summary>
+        int VentiladoresLigados { get; set; }
+        #endregion
+
         #region Construtor
         /// <summary>
         /// Instancia uma instância da classe <see cref="FrmSupervisorio"/>
@@ -21,6 +48,13 @@
             this.cmbVelocidade.SelectedIndex = 0;
             this.AlterarEstadoComponentes();
             this.btnLeituraDados.Enabled = false;
+
+            lblVentilador1.Text = "Desativado";
+            lblVentilador1.ForeColor = System.Drawing.Color.Red;
+            lblVentilador2.Text = "Desativado";
+            lblVentilador2.ForeColor = System.Drawing.Color.Red;
+            lblVentilador3.Text = "Desativado";
+            lblVentilador3.ForeColor = System.Drawing.Color.Red;
         }
         #endregion
 
@@ -99,6 +133,58 @@
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Inicia a leitura dos dados da serial
+        /// </summary>
+        /// <param name="sender">Objeto sender</param>
+        /// <param name="e">Objeto EventArgs</param>
+        private void btnLeituraDados_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    string.Format(
+                        "[Erro]{1}{0}{1}{1}[StackTrace]{1}{2}{1}",
+                        ex.Message,
+                        Environment.NewLine,
+                        ex.StackTrace),
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Evento DataReceived da conexão serial
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Objeto SerialDataReceivedEventArgs</param>
+        private void Conexao_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                // Obtém os dados da porta serial
+                this.StringRx = this.Conexao.ReadLine();
+                string[] retorno = this.StringRx.Split(';');
+                this.Saida1 = Convert.ToSingle(retorno[1].Replace('.', ','));
+                this.Saida2 = Convert.ToSingle(retorno[3].Replace('.', ','));
+                this.Temperatura = Convert.ToSingle(retorno[5].Replace('.', ','));
+                this.VentiladoresLigados = Convert.ToInt32(retorno[7].Replace('.', ','));
+
+                // Invoca os comandos para atualizar os campos
+                this.Invoke(new EventHandler(this.AlteraTxtResultado));
+                this.Invoke(new EventHandler(this.AlteraPgrTemperatura));
+                this.Invoke(new EventHandler(this.AtualizaVentiladores));
+            }
+            catch
+            {
             }
         }
         #endregion
@@ -184,6 +270,74 @@
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Altera o textbox com as informações lidas da serial
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Objeto EventArgs</param>
+        private void AlteraTxtResultado(object sender, EventArgs e)
+        {
+            this.txtResultadoSerial.Text += this.StringRx + Environment.NewLine;
+        }
+
+        /// <summary>
+        /// Altera o textbox com as informações lidas da serial
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Objeto EventArgs</param>
+        private void AlteraPgrTemperatura(object sender, EventArgs e)
+        {
+            this.pgrTemperatura.Value = (int)((this.Temperatura * 100) / 40);
+        }
+
+
+        /// <summary>
+        /// Altera o textbox com as informações lidas da serial
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Objeto EventArgs</param>
+        private void AtualizaVentiladores(object sender, EventArgs e)
+        {
+            switch (this.VentiladoresLigados)
+            {
+                case 0:
+                    this.lblVentilador1.Text = "Desativado";
+                    this.lblVentilador1.ForeColor = System.Drawing.Color.Red;
+                    this.lblVentilador2.Text = "Desativado";
+                    this.lblVentilador2.ForeColor = System.Drawing.Color.Red;
+                    this.lblVentilador3.Text = "Desativado";
+                    this.lblVentilador3.ForeColor = System.Drawing.Color.Red;
+                    break;
+
+                case 1:
+                    this.lblVentilador1.Text = "Ativado";
+                    this.lblVentilador1.ForeColor = System.Drawing.Color.ForestGreen;
+                    this.lblVentilador2.Text = "Desativado";
+                    this.lblVentilador2.ForeColor = System.Drawing.Color.Red;
+                    this.lblVentilador3.Text = "Desativado";
+                    this.lblVentilador3.ForeColor = System.Drawing.Color.Red;
+                    break;
+
+                case 2:
+                    this.lblVentilador1.Text = "Ativado";
+                    this.lblVentilador1.ForeColor = System.Drawing.Color.ForestGreen;
+                    this.lblVentilador2.Text = "Ativado";
+                    this.lblVentilador2.ForeColor = System.Drawing.Color.ForestGreen;
+                    this.lblVentilador3.Text = "Desativado";
+                    this.lblVentilador3.ForeColor = System.Drawing.Color.Red;
+                    break;
+
+                case 3:
+                    this.lblVentilador1.Text = "Ativado";
+                    this.lblVentilador1.ForeColor = System.Drawing.Color.ForestGreen;
+                    this.lblVentilador2.Text = "Ativado";
+                    this.lblVentilador2.ForeColor = System.Drawing.Color.ForestGreen;
+                    this.lblVentilador3.Text = "Ativado";
+                    this.lblVentilador3.ForeColor = System.Drawing.Color.ForestGreen;
+                    break;
             }
         }
         #endregion

@@ -371,11 +371,13 @@
                         switch (tipoPesos)
                         {
                             case 1:
-                                pesosCamada1 += string.Format(";{0}", Convert.ToString(valorLinha));
+                                pesosCamada1 += string.Format(
+                                    ";{0}", Convert.ToString(valorLinha).Replace(',', '.'));
                                 break;
 
                             case 2:
-                                pesosCamada2 += string.Format(";{0}", Convert.ToString(valorLinha));
+                                pesosCamada2 += string.Format(
+                                    ";{0}", Convert.ToString(valorLinha).Replace(',', '.'));
                                 break;
                         }
                     }

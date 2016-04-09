@@ -46,7 +46,7 @@ public class VerticalProgressBar : ProgressBar
 
         if (percentual <= 50)
         {
-            e.Graphics.FillRectangle(Brushes.Blue, 2, heightTemp, rec.Width, rec.Height);
+            e.Graphics.FillRectangle(Brushes.ForestGreen, 2, heightTemp, rec.Width, rec.Height);
             return;
         }
 
