@@ -89,9 +89,9 @@
                 e.Cancel = true;
                 MessageBox.Show(
                     string.Format(
-                    "Ocorreu o seguinte erro ao fechar a tela:{0}[Erro]{1}{0}Tente novamente.",
-                    Environment.NewLine,
-                    ex.Message),
+                        "Ocorreu o seguinte erro ao fechar a tela:{0}[Erro]{1}{0}Tente novamente.",
+                        Environment.NewLine,
+                        ex.Message),
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -162,10 +162,10 @@
                 // Mostra a mensagem com o erro que ocorreu
                 MessageBox.Show(
                     string.Format(
-                    "Ocorreu o seguinte erro durante a publicação do gráfico:{0}[Erro]{1}StackTrace{2}.",
-                    Environment.NewLine,
-                    exp.Message,
-                    exp.StackTrace),
+                        "Ocorreu o seguinte erro durante a publicação do gráfico:{0}[Erro]{1}StackTrace{2}.",
+                        Environment.NewLine,
+                        exp.Message,
+                        exp.StackTrace),
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

@@ -37,6 +37,7 @@
             this.lblProgresso = new System.Windows.Forms.Label();
             this.txtResultadoPesos = new System.Windows.Forms.TextBox();
             this.btnApresentarGrafico = new System.Windows.Forms.Button();
+            this.btnEnviarPesos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudTaxaAprendizado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             this.txtEpocas.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEpocas.Location = new System.Drawing.Point(12, 30);
-            this.txtEpocas.Mask = "0000000";
+            this.txtEpocas.Mask = "00000";
             this.txtEpocas.Name = "txtEpocas";
             this.txtEpocas.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtEpocas.Size = new System.Drawing.Size(61, 23);
@@ -120,14 +121,16 @@
             // lblProgresso
             // 
             this.lblProgresso.AutoSize = true;
+            this.lblProgresso.Font = new System.Drawing.Font("Consolas", 7.8F);
             this.lblProgresso.Location = new System.Drawing.Point(12, 60);
             this.lblProgresso.Name = "lblProgresso";
-            this.lblProgresso.Size = new System.Drawing.Size(177, 17);
+            this.lblProgresso.Size = new System.Drawing.Size(200, 17);
             this.lblProgresso.TabIndex = 13;
             this.lblProgresso.Text = "Progresso do Treinamento";
             // 
             // txtResultadoPesos
             // 
+            this.txtResultadoPesos.Font = new System.Drawing.Font("Consolas", 7.8F);
             this.txtResultadoPesos.Location = new System.Drawing.Point(12, 110);
             this.txtResultadoPesos.Multiline = true;
             this.txtResultadoPesos.Name = "txtResultadoPesos";
@@ -147,11 +150,23 @@
             this.btnApresentarGrafico.UseVisualStyleBackColor = true;
             this.btnApresentarGrafico.Click += new System.EventHandler(this.btnApresentarGrafico_Click);
             // 
+            // btnEnviarPesos
+            // 
+            this.btnEnviarPesos.Font = new System.Drawing.Font("Consolas", 7.8F);
+            this.btnEnviarPesos.Location = new System.Drawing.Point(617, 28);
+            this.btnEnviarPesos.Name = "btnEnviarPesos";
+            this.btnEnviarPesos.Size = new System.Drawing.Size(126, 23);
+            this.btnEnviarPesos.TabIndex = 16;
+            this.btnEnviarPesos.Text = "Enviar Pesos";
+            this.btnEnviarPesos.UseVisualStyleBackColor = true;
+            this.btnEnviarPesos.Click += new System.EventHandler(this.btnEnviarPesos_Click);
+            // 
             // FrmTreinamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 355);
+            this.Controls.Add(this.btnEnviarPesos);
             this.Controls.Add(this.btnApresentarGrafico);
             this.Controls.Add(this.txtResultadoPesos);
             this.Controls.Add(this.lblProgresso);
@@ -184,5 +199,6 @@
         private System.Windows.Forms.Label lblProgresso;
         private System.Windows.Forms.TextBox txtResultadoPesos;
         private System.Windows.Forms.Button btnApresentarGrafico;
+        private System.Windows.Forms.Button btnEnviarPesos;
     }
 }

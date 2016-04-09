@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.IO.Ports;
     using System.Threading;
     using System.Windows.Forms;
 
@@ -227,20 +228,62 @@
         /// Define se a thread está em execução
         /// </summary>
         private bool ThreadEmExecucao { get; set; }
+
+        /// <summary>
+        /// Coenxão com a porta serial
+        /// </summary>
+        SerialPort Conexao;
         #endregion
 
         #region Construtor
         /// <summary>
         /// Instancia uma instância da classe <see cref="FrmTreinamento"/>
         /// </summary>
-        public FrmTreinamento()
+        public FrmTreinamento(SerialPort conexao)
         {
             this.InitializeComponent();
+
+            // Inicializa a conexão
+            this.Conexao = conexao;
+
+            // Botão de Envio de pesos
+            this.btnEnviarPesos.Enabled = ((this.Conexao != null) && this.Conexao.IsOpen);
         }
         #endregion
 
         #region Métodos
-        #region Componentes do form
+        #region Métodos do Form
+        /// <summary>
+        /// Antes de finalizar o form fecha as threads abertas
+        /// </summary>
+        /// <param name="sender">Parâmetro sender</param>
+        /// <param name="e">Parâmetro FormClosingEventArgs</param>
+        private void FrmTreinamento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                if ((this.ThreadTreinarRede != null) && this.ThreadTreinarRede.IsAlive)
+                {
+                    this.ThreadTreinarRede.Abort();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostra a mensagem com o erro que ocorreu
+                e.Cancel = true;
+                MessageBox.Show(
+                    string.Format(
+                        "Ocorreu o seguinte erro ao fechar a tela:{0}[Erro]{1}{0}Tente novamente.",
+                        Environment.NewLine,
+                        ex.Message),
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+        #region Métodos de Componentes do form
         /// <summary>
         /// Evento click do botão de programação do treino
         /// </summary>
@@ -267,9 +310,9 @@
                 // Mostra a mensagem com o erro que ocorreu
                 MessageBox.Show(
                     string.Format(
-                    "Ocorreu o seguinte erro ao treinar a rede:{0}[Erro]{1}",
-                    Environment.NewLine,
-                    exp.Message),
+                        "Ocorreu o seguinte erro ao treinar a rede:{0}[Erro]{1}",
+                        Environment.NewLine,
+                        exp.Message),
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -289,28 +332,68 @@
         }
 
         /// <summary>
-        /// Antes de finalizar o form fecha as threads abertas
+        /// Evento Click do botão Enviar Pesos
         /// </summary>
         /// <param name="sender">Parâmetro sender</param>
         /// <param name="e">Parâmetro FormClosingEventArgs</param>
-        private void FrmTreinamento_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnEnviarPesos_Click(object sender, EventArgs e)
         {
             try
             {
-                if ((this.ThreadTreinarRede != null) && this.ThreadTreinarRede.IsAlive)
+                string pesosCamada1 = "C1";
+                string pesosCamada2 = "C2";
+                int tipoPesos = 0;
+
+                // Atualiza o gráfico
+                using (StreamReader sr = new StreamReader(
+                    Path.Combine(Application.StartupPath, "PesosTreinados.txt")))
                 {
-                    this.ThreadTreinarRede.Abort();
+                    while (true)
+                    {
+                        string valorLinha = sr.ReadLine();
+                        if (string.IsNullOrEmpty(valorLinha))
+                        {
+                            break;
+                        }
+
+                        if (valorLinha == "PC1")
+                        {
+                            tipoPesos = 1;
+                            continue;
+                        }
+
+                        if (valorLinha == "PC2")
+                        {
+                            tipoPesos = 2;
+                            continue;
+                        }
+
+                        switch (tipoPesos)
+                        {
+                            case 1:
+                                pesosCamada1 += string.Format(";{0}", Convert.ToString(valorLinha));
+                                break;
+
+                            case 2:
+                                pesosCamada2 += string.Format(";{0}", Convert.ToString(valorLinha));
+                                break;
+                        }
+                    }
+
+                    sr.Close();
                 }
+
+                this.EscreverStringSerial(pesosCamada1 + Environment.NewLine);
+                this.EscreverStringSerial(pesosCamada2 + Environment.NewLine);
             }
             catch (Exception ex)
             {
-                // Mostra a mensagem com o erro que ocorreu
-                e.Cancel = true;
                 MessageBox.Show(
                     string.Format(
-                    "Ocorreu o seguinte erro ao fechar a tela:{0}[Erro]{1}{0}Tente novamente.",
-                    Environment.NewLine,
-                    ex.Message),
+                        "[Erro]{0}{1}{0}{0}[StackTrace]{0}{2}",
+                        Environment.NewLine,
+                        ex.Message,
+                        ex.StackTrace),
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -517,8 +600,12 @@
             }
             catch (Exception exp)
             {
-                MessageBox.Show(string.Format(
-                    "[Erro]{0}{1}[StackTrace]{0}{2}", Environment.NewLine, exp.Message, exp.StackTrace));
+                MessageBox.Show(
+                    string.Format(
+                        "[Erro]{0}{1}[StackTrace]{0}{2}",
+                        Environment.NewLine,
+                        exp.Message,
+                        exp.StackTrace));
             }
         }
 
@@ -531,14 +618,14 @@
             using (StreamWriter sw = new StreamWriter(this.ArqPesos.FullName))
             {
                 // Grava os pesos da camada 1.
-                sw.Write(string.Format("Pesos Camada 1{0}", Environment.NewLine));
+                sw.Write(string.Format("PC1{0}", Environment.NewLine));
                 for (j = 0; j < (cx * c1); j++)
                 {
                     sw.Write(string.Format("{0}{1}", w1[j], Environment.NewLine));
                 }
 
                 // Grava os pesos da camada 2.
-                sw.Write(string.Format("Pesos Camada 2{0}", Environment.NewLine));
+                sw.Write(string.Format("PC2{0}", Environment.NewLine));
                 for (j = 0; j < (c1 * c2); j++)
                 {
                     sw.Write(string.Format("{0}{1}", w2[j], Environment.NewLine));
@@ -704,14 +791,14 @@
             using (StreamWriter sw = new StreamWriter(this.ArqPesosTreinados.FullName))
             {
                 // Grava os pesos da camada 1.
-                sw.Write(string.Format("Pesos Camada 1{0}", Environment.NewLine));
+                sw.Write(string.Format("PC1{0}", Environment.NewLine));
                 for (j = 0; j < (cx * c1); j++)
                 {
                     sw.Write(string.Format("{0}{1}", w1[j], Environment.NewLine));
                 }
 
                 // Grava os pesos da camada 2.
-                sw.Write(string.Format("Pesos Camada 2{0}", Environment.NewLine));
+                sw.Write(string.Format("PC2{0}", Environment.NewLine));
                 for (j = 0; j < (c1 * c2); j++)
                 {
                     sw.Write(string.Format("{0}{1}", w2[j], Environment.NewLine));
@@ -783,6 +870,20 @@
                 this.txtEpocas.Focus();
                 throw new Exception("Épocas. Preenchimento obrigatório.");
             }
+        }
+
+        /// <summary>
+        /// Escreve uma string na porta serial
+        /// </summary>
+        /// <param name="dado">Dado à ser enviado para a serial</param>
+        private void EscreverStringSerial(string dado)
+        {
+            if (!this.Conexao.IsOpen)
+            {
+                throw new Exception("Conexão não está aberta.");
+            }
+
+            this.Conexao.Write(dado);
         }
         #endregion
 
