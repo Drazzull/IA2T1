@@ -70,7 +70,7 @@
             this.btnLeituraDados.Font = new System.Drawing.Font("Consolas", 7.8F);
             this.btnLeituraDados.Location = new System.Drawing.Point(555, 25);
             this.btnLeituraDados.Name = "btnLeituraDados";
-            this.btnLeituraDados.Size = new System.Drawing.Size(207, 31);
+            this.btnLeituraDados.Size = new System.Drawing.Size(221, 31);
             this.btnLeituraDados.TabIndex = 5;
             this.btnLeituraDados.Text = "Iniciar Leitura Serial";
             this.btnLeituraDados.UseVisualStyleBackColor = true;
@@ -223,7 +223,7 @@
             this.txtResultadoSerial.Name = "txtResultadoSerial";
             this.txtResultadoSerial.ReadOnly = true;
             this.txtResultadoSerial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResultadoSerial.Size = new System.Drawing.Size(757, 226);
+            this.txtResultadoSerial.Size = new System.Drawing.Size(771, 226);
             this.txtResultadoSerial.TabIndex = 24;
             // 
             // label3
@@ -231,7 +231,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 7.8F);
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(720, 59);
+            this.label3.Location = new System.Drawing.Point(727, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 25;
@@ -242,7 +242,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 7.8F);
             this.label4.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label4.Location = new System.Drawing.Point(720, 300);
+            this.label4.Location = new System.Drawing.Point(731, 300);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 17);
             this.label4.TabIndex = 26;
@@ -262,14 +262,14 @@
             // 
             this.pgrTemperatura.Location = new System.Drawing.Point(710, 79);
             this.pgrTemperatura.Name = "pgrTemperatura";
-            this.pgrTemperatura.Size = new System.Drawing.Size(52, 218);
+            this.pgrTemperatura.Size = new System.Drawing.Size(66, 218);
             this.pgrTemperatura.TabIndex = 20;
             // 
             // FrmSupervisorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 558);
+            this.ClientSize = new System.Drawing.Size(793, 558);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

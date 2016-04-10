@@ -340,8 +340,8 @@
         {
             try
             {
-                string pesosCamada1 = "C1";
-                string pesosCamada2 = "C2";
+                string pesosCamada1 = "#C1";
+                string pesosCamada2 = "#C2";
                 int tipoPesos = 0;
 
                 // Atualiza o gráfico
@@ -387,6 +387,11 @@
 
                 this.EscreverStringSerial(pesosCamada1 + Environment.NewLine);
                 this.EscreverStringSerial(pesosCamada2 + Environment.NewLine);
+                MessageBox.Show(
+                    "Dados enviados com sucesso.",
+                    "Status do envio",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

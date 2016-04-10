@@ -31,6 +31,16 @@
         /// Variável com os controles dos ventiladores
         /// </summary>
         int VentiladoresLigados { get; set; }
+
+        /// <summary>
+        /// Define se está sendo executada a leitura de dados da serial
+        /// </summary>
+        bool ExecutandoLeitura { get; set; }
+
+        /// <summary>
+        /// Obtém ou define o contador de linhas para amostragem dos dados
+        /// </summary>
+        int ContadorLinhas { get; set; }
         #endregion
 
         #region Construtor
@@ -67,6 +77,10 @@
         /// <param name="e">Objeto EventArgs</param>
         private void btnProgramarTreinamento_Click(object sender, EventArgs e)
         {
+            // Define que a leitura não será mais executada
+            this.ExecutandoLeitura = false;
+
+            // Abre a tela de treinamento
             FrmTreinamento frmTreinamento = new FrmTreinamento(this.Conexao);
             frmTreinamento.ShowDialog();
         }
@@ -101,6 +115,8 @@
                     this.Conexao.Close();
                     this.btnConectar.Text = "Conectar";
                     this.btnLeituraDados.Enabled = false;
+                    this.btnLeituraDados.Text = "Iniciar Leitura Serial";
+                    this.ExecutandoLeitura = false;
                     MessageBox.Show(
                         "Desconectado com Sucesso.",
                         "Sucesso!",
@@ -114,6 +130,8 @@
                 this.Conexao.Open();
                 this.btnConectar.Text = "Desconectar";
                 this.btnLeituraDados.Enabled = true;
+                this.btnLeituraDados.Text = "Iniciar Leitura Serial";
+                this.ExecutandoLeitura = false;
                 MessageBox.Show(
                     "Conectado com Sucesso.",
                     "Sucesso!",
@@ -145,7 +163,15 @@
         {
             try
             {
+                if (this.ExecutandoLeitura)
+                {
+                    this.btnLeituraDados.Text = "Iniciar Leitura Serial";
+                    this.ExecutandoLeitura = false;
+                    return;
+                }
 
+                this.btnLeituraDados.Text = "Desativar Leitura Serial";
+                this.ExecutandoLeitura = true;
             }
             catch (Exception ex)
             {
@@ -170,6 +196,11 @@
         {
             try
             {
+                if (!this.ExecutandoLeitura)
+                {
+                    return;
+                }
+
                 // Obtém os dados da porta serial
                 this.StringRx = this.Conexao.ReadLine();
                 string[] retorno = this.StringRx.Split(';');
@@ -280,7 +311,19 @@
         /// <param name="e">Objeto EventArgs</param>
         private void AlteraTxtResultado(object sender, EventArgs e)
         {
+            this.ContadorLinhas++;
+            if (this.ContadorLinhas > 100)
+            {
+                this.ContadorLinhas = 0;
+                this.txtResultadoSerial.Text = string.Empty;
+            }
+
             this.txtResultadoSerial.Text += this.StringRx + Environment.NewLine;
+            this.txtResultadoSerial.Text += string.Format("Saída 1: {0}|", this.Saida1);
+            this.txtResultadoSerial.Text += string.Format("Saída 2: {0}|", this.Saida2);
+            this.txtResultadoSerial.Text += string.Format(
+                "Temperatura: {0}{1}", this.Temperatura, Environment.NewLine);
+            this.txtResultadoSerial.ScrollToCaret();
         }
 
         /// <summary>
