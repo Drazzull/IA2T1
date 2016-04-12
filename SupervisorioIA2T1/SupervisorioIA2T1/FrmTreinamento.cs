@@ -134,12 +134,6 @@
                     this.arqPesos = new FileInfo(Path.Combine(Application.StartupPath, "PesosRandomizados.txt"));
                 }
 
-                // Verifica se o arquivo já está criado
-                if (!this.arqPesos.Exists)
-                {
-                    this.arqPesos.Create();
-                }
-
                 // Atualiza as propriedades do campo
                 this.arqPesos.Refresh();
                 return this.arqPesos;
@@ -160,12 +154,6 @@
                         Path.Combine(Application.StartupPath, "Treinamento.txt"));
                 }
 
-                // Verifica se o arquivo já está criado
-                if (!this.arqTreinamento.Exists)
-                {
-                    this.arqTreinamento.Create();
-                }
-
                 // Atualiza as propriedades do campo
                 this.arqTreinamento.Refresh();
                 return this.arqTreinamento;
@@ -184,12 +172,6 @@
                 {
                     this.arqPesosTreinados = new FileInfo(
                         Path.Combine(Application.StartupPath, "PesosTreinados.txt"));
-                }
-
-                // Verifica se o arquivo já está criado
-                if (!this.arqPesosTreinados.Exists)
-                {
-                    this.arqPesosTreinados.Create();
                 }
 
                 // Atualiza as propriedades do campo
@@ -341,7 +323,7 @@
             try
             {
                 string pesosCamada1 = "#C1";
-                string pesosCamada2 = "#C2";
+                string pesosCamada2 = "C2";
                 int tipoPesos = 0;
 
                 // Atualiza o gráfico
@@ -385,10 +367,16 @@
                     sr.Close();
                 }
 
-                this.EscreverStringSerial(pesosCamada1 + Environment.NewLine);
-                this.EscreverStringSerial(pesosCamada2 + Environment.NewLine);
+                //this.EscreverStringSerial(pesosCamada1 + Environment.NewLine);
+                //Thread.Sleep(250);
+                //this.EscreverStringSerial(pesosCamada2 + Environment.NewLine);
+                string comando = pesosCamada1 + ";" + pesosCamada2 + Environment.NewLine;
+                this.EscreverStringSerial(comando);
                 MessageBox.Show(
-                    "Dados enviados com sucesso.",
+                    string.Format(
+                        "Dados enviados com sucesso.{0}Envio Serial: {1}",
+                        Environment.NewLine,
+                        comando),
                     "Status do envio",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
