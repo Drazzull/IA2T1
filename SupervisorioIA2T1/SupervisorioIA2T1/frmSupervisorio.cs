@@ -312,18 +312,17 @@
         private void AlteraTxtResultado(object sender, EventArgs e)
         {
             this.ContadorLinhas++;
-            if (this.ContadorLinhas > 100)
+            if (this.ContadorLinhas > 10)
             {
                 this.ContadorLinhas = 0;
                 this.txtResultadoSerial.Text = string.Empty;
             }
 
-            this.txtResultadoSerial.Text += this.StringRx + Environment.NewLine;
-            this.txtResultadoSerial.Text += string.Format("Saída 1: {0}|", this.Saida1);
-            this.txtResultadoSerial.Text += string.Format("Saída 2: {0}|", this.Saida2);
-            this.txtResultadoSerial.Text += string.Format(
-                "Temperatura: {0}{1}", this.Temperatura, Environment.NewLine);
-            this.txtResultadoSerial.ScrollToCaret();
+            this.txtResultadoSerial.AppendText(this.StringRx + Environment.NewLine);
+            this.txtResultadoSerial.AppendText(string.Format("Saída 1: {0}|", this.Saida1));
+            this.txtResultadoSerial.AppendText(string.Format("Saída 2: {0}|", this.Saida2));
+            this.txtResultadoSerial.AppendText(string.Format(
+                "Temperatura: {0}{1}", this.Temperatura, Environment.NewLine));
         }
 
         /// <summary>
